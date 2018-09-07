@@ -1,18 +1,40 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends Component {
+  constructor(){
+    super();
+
+    this.state={
+      array: ["ice cream", "cake", "cookie", "pie"]
+    }
+
+    // this.displayArray = this.displayArray.bind(this)
+  }
+  
+  // displayArray(){
+  //   let arr = this.state.array.slice();
+
+  //   arr.forEach((e,i,arr)=>{
+  //     return <div>{e}</div>
+  //   })
+
+  //   console.log(arr)
+
+  //   this.setState({array: arr})
+  // }
+  
   render() {
+    let newArr = this.state.array.map((e,i,arr)=>{
+      return <h2>{e}</h2>
+    })
+
     return (
+
+      
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+       <h1>App 2</h1>
+       {newArr}
       </div>
     );
   }
