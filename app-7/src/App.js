@@ -1,18 +1,45 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import NewTask from './components/NewTask';
+import List from './components/List';
 
 class App extends Component {
+  constructor(){
+    super();
+
+    this.state={
+      taskArray: ["hi"]
+    }
+    this.addTask = this.addTask.bind(this)
+  }
+ 
+  addTask(task){
+    
+    const {taskArray} = this.state;
+    console.log(task)
+    
+    let fullArr = []
+    fullArr = taskArray.slice()//.push(task) //WHYYY does this break???
+    fullArr.push(task) //but this doesnt??????????
+    //APPARENTLY push returns an integer fml
+    console.log(fullArr)
+    this.setState({taskArray: fullArr})
+    console.log(taskArray)
+
+    // this.setState({ taskArray: [ ...this.state.taskArray, task ] });
+
+  }
+  
+ 
   render() {
+    
+    
     return (
       <div className="App">
-        <div className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <h1>To do list:</h1>
+        <NewTask add={this.addTask} />
+        <List arr={this.state.taskArray} />
+        
       </div>
     );
   }
